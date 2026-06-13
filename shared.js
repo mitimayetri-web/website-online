@@ -19,7 +19,7 @@ document.getElementById('navbar-placeholder').innerHTML = `
       <li><a href="contact.html"      class="${isActive('contact.html')}">Contact</a></li>
     </ul>
     <div class="nav-actions">
-      <a href="#" class="btn-primary">Register Now ♥</a>
+      <a href="https://forms.gle/jrAWi5nGFJL1nZMP6" class="btn-primary">Register Now ♥</a>
     </div>
   </nav>
 `;
