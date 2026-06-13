@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us — Miti Mayetri</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ── Mission ── */
+    .mission-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .mission-text h2 { color: var(--maroon); margin-bottom: 16px; }
+    .mission-text p  { margin-bottom: 14px; font-size: 15px; }
+    .mission-image {
+      background: linear-gradient(135deg, var(--cream-dark), var(--border));
+      border-radius: var(--radius-lg);
+      aspect-ratio: 4/3;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 80px;
+    }
+
+    /* ── Values ── */
+    .values-section { background: var(--cream); }
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .value-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 32px 26px;
+      text-align: center;
+      box-shadow: var(--shadow-card);
+    }
+    .value-card .icon-circle { background: var(--cream); border-color: var(--gold); }
+    .value-card h3 { color: var(--maroon); margin-bottom: 10px; }
+    .value-card p  { font-size: 14px; }
+
+    /* ── Stats ── */
+    .stats-section { background: var(--maroon); padding: 80px 60px; }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      text-align: center;
+    }
+    .stat-item {}
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--white);
+      display: block;
+    }
+    .stat-label { font-size: 14px; color: rgba(255,255,255,0.7); }
+
+    /* ── Team ── */
+    .team-section { background: var(--white); }
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .team-card {
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 32px 24px;
+      text-align: center;
+    }
+    .team-avatar {
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      background: var(--maroon);
+      color: var(--white);
+      font-family: var(--font-display);
+      font-size: 28px;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 16px;
+    }
+    .team-card h3 { color: var(--text-dark); margin-bottom: 4px; }
+    .team-card .role { font-size: 13px; color: var(--maroon); font-weight: 600; margin-bottom: 12px; }
+    .team-card p   { font-size: 13px; color: var(--text-light); }
+
+    /* ── Story Timeline ── */
+    .story-section { background: var(--cream); }
+    .timeline { display: flex; flex-direction: column; gap: 0; max-width: 680px; margin: 0 auto; position: relative; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 20px; top: 0; bottom: 0;
+      width: 2px;
+      background: var(--border);
+    }
+    .timeline-item { display: flex; gap: 32px; padding-bottom: 40px; position: relative; }
+    .timeline-dot {
+      width: 40px; height: 40px; flex-shrink: 0;
+      background: var(--maroon); border-radius: 50%;
+      color: var(--white); font-weight: 700; font-size: 13px;
+      display: flex; align-items: center; justify-content: center;
+      position: relative; z-index: 1;
+    }
+    .timeline-content { padding-top: 8px; }
+    .timeline-year { font-size: 12px; font-weight: 700; color: var(--maroon); letter-spacing: 0.1em; margin-bottom: 4px; }
+    .timeline-content h3 { color: var(--text-dark); margin-bottom: 6px; font-size: 16px; }
+    .timeline-content p  { font-size: 14px; color: var(--text-light); }
+
+    @media (max-width: 900px) {
+      .mission-grid { grid-template-columns: 1fr; gap: 32px; }
+      .mission-image { display: none; }
+      .values-grid, .team-grid { grid-template-columns: 1fr 1fr; }
+      .stats-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
+      .stats-section { padding: 60px 24px; }
+    }
+    @media (max-width: 600px) {
+      .values-grid, .team-grid, .stats-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div id="navbar-placeholder"></div>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="page-hero-eyebrow">Our Story</div>
+    <h1>About Miti Mayetri</h1>
+    <p>It started with a simple belief — our community deserves better.<br>
+
+Miti Mayetri was born from conversations, from families, from the quiet understanding of what truly matters in a Sindhi marriage.
+<br>
+This isn’t just a business. It’s personal.</p>
+  </div>
+
+  <!-- MISSION -->
+  <section class="section">
+    <div class="mission-grid">
+      <div class="mission-text">
+        <h2>Our Mission</h2>
+        <p>Bringing back the human touch
+Remember how marriages used to happen?
+<br>
+A trusted elder. A known family. A sense of comfort before the first meeting even happened. That feeling is missing today. So we decided to bring it back.
+<br>
+At Miti Mayetri, we don’t just “show matches.” We understand families. We verify people. We guide connections. Every profile. Every introduction. Every WhatsApp message — done with the same care your Thukka Tai would have taken. Because finding a life partner isn’t a swipe. It’s a responsibility. And we take it seriously. Come be part of this
+<br>
+We’re building this slowly, thoughtfully, and with heart — one match at a time. If you believe marriages should still feel right, not random…
+<br>
+You belong here.
+<br>
+Join today — ₹99, valid till marriage
+
+Proudly presented by Thukka Tai</p>
+        <a href="#" class="btn-primary" style="margin-top: 12px;">Create Your Profile <span class="heart">♥</span></a>
+      </div>
+      <div class="mission-image">🫶</div>
+    </div>
+  </section>
+
+  <!-- VALUES -->
+  <section class="section values-section">
+    <div class="section-header">
+      <h2>Our Core Values</h2>
+      <p>Every decision we make is guided by these principles that put our community first.</p>
+    </div>
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="icon-circle">🤝</div>
+        <h3>Trust &amp; Transparency</h3>
+        <p>We verify every profile manually and keep our pricing clear and honest. No hidden fees, no surprises.</p>
+      </div>
+      <div class="value-card">
+        <div class="icon-circle">🫂</div>
+        <h3>Community First</h3>
+        <p>Built exclusively for Sindhi families. We speak your language — literally and culturally.</p>
+      </div>
+      <div class="value-card">
+        <div class="icon-circle">🔐</div>
+        <h3>Privacy &amp; Safety</h3>
+        <p>You control who sees your photos and contact details. Your data is never shared without consent.</p>
+      </div>
+      <div class="value-card">
+        <div class="icon-circle">💡</div>
+        <h3>Personal Support</h3>
+        <p>A real relationship manager assists you — not just an algorithm. We are a call or message away.</p>
+      </div>
+      <div class="value-card">
+        <div class="icon-circle">✨</div>
+        <h3>Quality Over Quantity</h3>
+        <p>We curate matches thoughtfully. 15 carefully chosen profiles beats 1,000 random ones every time.</p>
+      </div>
+      <div class="value-card">
+        <div class="icon-circle">🌍</div>
+        <h3>Global Sindhi Network</h3>
+        <p>Sindhi families are spread across the world. Our platform connects you to this global diaspora.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <!-- <section class="stats-section">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <span class="stat-num">2000+</span>
+        <span class="stat-label">Registered Families</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">450+</span>
+        <span class="stat-label">Successful Matches</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">15+</span>
+        <span class="stat-label">Cities Covered</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">98%</span>
+        <span class="stat-label">Profile Verification Rate</span>
+      </div>
+    </div>
+  </section> -->
+
+  <!-- OUR STORY TIMELINE -->
+  <!-- <section class="section story-section">
+    <div class="section-header">
+      <h2>How It All Began</h2>
+      <p>A journey started by a family, for families.</p>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot">1</div>
+        <div class="timeline-content">
+          <div class="timeline-year">2021</div>
+          <h3>The Idea Is Born</h3>
+          <p>A Sindhi family in Jabalpur frustrated with generic matrimonial sites decides to build something better — for our own people.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot">2</div>
+        <div class="timeline-content">
+          <div class="timeline-year">2022</div>
+          <h3>Community Pilot Launch</h3>
+          <p>We launched a WhatsApp-based pilot with 50 families. Within 3 months, 8 couples had connected. Word spread fast.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot">3</div>
+        <div class="timeline-content">
+          <div class="timeline-year">2023</div>
+          <h3>Miti Mayetri Goes Online</h3>
+          <p>The formal platform launched, with verified profiles, a relationship manager system, and structured membership plans.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot">4</div>
+        <div class="timeline-content">
+          <div class="timeline-year">2024 — Today</div>
+          <h3>Growing Stronger</h3>
+          <p>Over 2,000 families. 450+ matches. And the journey continues — one happy family at a time.</p>
+        </div>
+      </div>
+    </div>
+  </section> -->
+
+  <!-- TEAM -->
+  <!-- <section class="section team-section">
+    <div class="section-header">
+      <h2>The People Behind Miti Mayetri</h2>
+      <p>A dedicated team of Sindhi community members who care deeply about every match we make.</p>
+    </div>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-avatar">R</div>
+        <h3>Ravi Lalwani</h3>
+        <div class="role">Founder &amp; CEO</div>
+        <p>30+ years of community involvement. Believes every family deserves a match that respects tradition and modernity.</p>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">S</div>
+        <h3>Sunita Mirchandani</h3>
+        <div class="role">Head of Relationships</div>
+        <p>A professional counselor and matchmaker with 10 years experience in Sindhi family dynamics.</p>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">A</div>
+        <h3>Anita Kewalramani</h3>
+        <div class="role">Community Manager</div>
+        <p>Ensures every family feels heard, supported, and guided throughout their journey on Miti Mayetri.</p>
+      </div>
+    </div>
+  </section> -->
+<div class="footer-background-set">
+    <div class="absolute inset-0 opacity-[0.03] pointer-events-none">
+    <img src="announment-back.png" alt="" class="w-full h-full object-cover">
+  
+  </div>
+  <div id="footer-placeholder"></div>
+</div>
+  <script src="shared.js"></script>
+</body>
+</html>

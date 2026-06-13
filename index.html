@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Miti Mayetri — Your Family's Most Important Search, Simplified</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ── HERO ── */
+    .hero {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 60px;
+      align-items: center;
+      padding: 70px 80px;
+      background: var(--cream);
+      min-height: 88vh;
+    }
+    .hero-text h1 {
+      color: var(--text-dark);
+      margin-bottom: 20px;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      line-height: 1.2;
+    }
+    .hero-text > p {
+      font-size: 15px;
+      color: var(--text-light);
+      margin-bottom: 32px;
+      max-width: 460px;
+      line-height: 1.75;
+    }
+    .hero-cta { margin-bottom: 36px; }
+
+    /* Trust cards — inside left column */
+    .hero-trust-cards {
+          gap: 14px;
+    display: grid;
+    column-gap: 12px;
+    width: 100%;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    max-width: 512px;
+    }
+    .trust-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 14px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+    }
+    .trust-card-icon {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      background: var(--maroon);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .trust-card span {
+      font-size: 13px;
+      color: var(--text-mid);
+      line-height: 1.55;
+    }
+
+    /* Hero image — tall rounded */
+    .hero-image-wrap { position: relative; }
+    .hero-image-box {
+      width: 100%;
+      aspect-ratio: 3/4;
+      border-radius: 40px;
+      overflow: hidden;
+      background: var(--cream-dark);
+      box-shadow: 0 8px 40px rgba(0,0,0,0.1);
+    }
+    .hero-image-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    /* ── WHY CHOOSE ── */
+    .why-section { background: var(--cream); }
+    .why-section .section-header p em { font-style: italic; }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+    .feature-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 30px 22px;
+      text-align: center;
+      box-shadow: var(--shadow-card);
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .feature-card:hover { box-shadow: var(--shadow-soft); transform: translateY(-3px); }
+    .feature-card h3 { color: var(--maroon); font-size: 20px; margin-bottom: 8px; }
+    .feature-card p  { font-size: 13px; color: var(--text-light); }
+
+    /* ── SUCCESS STORIES ── */
+    .stories-section { background: var(--white); }
+    .stories-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+    .story-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 28px;
+      box-shadow: var(--shadow-card);
+    }
+    .story-card .stars { margin-bottom: 14px; font-size: 16px; }
+    .story-card blockquote { font-size: 14px; color: var(--text-mid); line-height: 1.7; margin-bottom: 18px; font-style: italic; }
+    .story-couple { font-size: 12px; font-weight: 700; letter-spacing: 0.1em; color: var(--maroon); text-transform: uppercase; }
+    .stories-section .btn-primary { margin: 0 auto; display: flex; width: fit-content; }
+
+    /* ── MEMBERSHIP ── */
+    .membership-section { background: var(--cream); }
+    .plans-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .plan-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 32px;
+      box-shadow: var(--shadow-card);
+      display: flex; flex-direction: column;
+      transition: box-shadow 0.2s;
+    }
+    .plan-card:hover { box-shadow: var(--shadow-soft); }
+    .plan-icon { font-size: 32px; margin-bottom: 12px; }
+    .plan-name { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-light); margin-bottom: 4px; }
+    .plan-label { font-family: var(--font-display); font-size: 1.1rem; color: var(--maroon); font-weight: 600; margin-bottom: 20px; }
+    .plan-price { font-family: var(--font-display); font-size: 2.4rem; font-weight: 700; color: var(--text-dark); }
+    .plan-price .currency { font-size: 1.2rem; vertical-align: super; margin-right: 2px; }
+    /* .plan-period { font-size: 13px; color: var(--text-light); margin-bottom: 24px; } */
+    .plan-card .check-list { flex: 1; }
+    .plan-card .btn-primary,
+    .plan-card .btn-outline {
+      margin-top: 28px;
+      justify-content: center;
+    }
+    .plan-card .btn-disabled {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      background: var(--cream-dark);
+      color: var(--text-light);
+      font-size: 14px; font-weight: 600;
+      padding: 13px 28px;
+      border-radius: var(--radius-pill);
+      margin-top: 28px;
+      cursor: not-allowed;
+    }
+    .plan-divider { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
+
+    /* ── HOW IT WORKS ── */
+    .how-section { background: var(--white); }
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+    .step-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 28px 22px;
+      text-align: center;
+      position: relative;
+      box-shadow: var(--shadow-card);
+    }
+    .step-num {
+      position: absolute;
+      top: -16px; left: 50%; transform: translateX(-50%);
+      width: 34px; height: 34px;
+      background: var(--maroon);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 14px;
+    }
+    .step-card .icon-circle { margin-top: 12px; }
+    .step-card h3 { font-size: 14px; color: var(--text-dark); margin-bottom: 10px; }
+    .step-card p  { font-size: 13px; color: var(--text-light); }
+    .how-section .btn-primary { margin: 0 auto; display: flex; width: fit-content; }
+
+    /* ── CTA BANNER ── */
+    .cta-banner {
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%2395361D'/%3E%3Ccircle cx='80' cy='80' r='120' fill='%23B04422' opacity='0.4'/%3E%3Ccircle cx='320' cy='220' r='100' fill='%237A2A14' opacity='0.5'/%3E%3C/svg%3E") center/cover;
+      background-color: var(--maroon);
+      padding: 100px 60px;
+      text-align: center;
+      color: var(--white);
+    }
+    .cta-banner h2 { color: var(--white); font-size: clamp(1.8rem, 3vw, 2.6rem); margin-bottom: 14px; }
+    .cta-banner p  { color: rgba(255,255,255,0.8); margin-bottom: 32px; font-size: 15px; }
+    .cta-banner .btn-primary { background: var(--white); color: var(--maroon); margin: 0 auto; display: flex; width: fit-content; font-weight: 700; }
+    .cta-banner .btn-primary:hover { background: var(--cream-dark); }
+
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; padding: 48px 24px 40px; min-height: auto; gap: 36px; }
+      h2 {
+    font-size: 30px;
+}
+      .features-grid, .stories-grid, .plans-grid, .steps-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .features-grid, .stories-grid, .plans-grid, .steps-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="utility-bar color-scheme-726303ff-02d1-4c55-9fae-588a7a50a406 gradient utility-bar--bottom-border">
+  <div class="utility-bar-sections-announcement-bar"></div>
+  <div class="page-width utility-bar__grid"><div class="announcement-bar" role="region" aria-label="Announcement"><p class="announcement-bar__message h5">
+                        <span class="svg__wrappper">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart text-[#FBEACB] fill-current animate-pulse" aria-hidden="true" bis_size="{&quot;x&quot;:896,&quot;y&quot;:14,&quot;w&quot;:18,&quot;h&quot;:18,&quot;abs_x&quot;:896,&quot;abs_y&quot;:14}">
+                <path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5" bis_size="{&quot;x&quot;:897,&quot;y&quot;:17,&quot;w&quot;:15,&quot;h&quot;:12,&quot;abs_x&quot;:897,&quot;abs_y&quot;:17}"></path>
+              </svg>
+            </span>
+            <span>Find Your Perfect Partner Here</span>
+            
+            <span class="svg__wrappper">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart text-[#FBEACB] fill-current animate-pulse" aria-hidden="true" bis_size="{&quot;x&quot;:896,&quot;y&quot;:14,&quot;w&quot;:18,&quot;h&quot;:18,&quot;abs_x&quot;:896,&quot;abs_y&quot;:14}">
+                <path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5" bis_size="{&quot;x&quot;:897,&quot;y&quot;:17,&quot;w&quot;:15,&quot;h&quot;:12,&quot;abs_x&quot;:897,&quot;abs_y&quot;:17}"></path>
+              </svg>
+            </span>
+          </p></div><div class="localization-wrapper">
+</div>
+  </div>
+</div>
+  <div id="navbar-placeholder"></div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Your Family's Most Important Search — Simplified</h1>
+      <p>Miti Mayetri is exclusively built for the Sindhi community. Verified profiles, curated matches, and real support — every step of the way.</p>
+      <div class="hero-cta">
+        <a href="#" class="btn-primary">CREATE YOUR PROFILE — ₹99 <span class="heart">♥</span></a>
+      </div>
+      <!-- 3 Trust Cards inside left column -->
+      <div class="hero-trust-cards">
+        <div class="trust-card">
+          <div class="trust-card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="none" viewBox="0 0 24 24">
+              <path fill="#fff" d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
+            </svg>
+          </div>
+          <span>Exclusively for our community — no outsiders</span>
+        </div>
+        <div class="trust-card">
+          <div class="trust-card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="none" viewBox="0 0 24 24">
+              <path fill="#fff" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            </svg>
+          </div>
+          <span>Matches delivered directly — no app, no login needed</span>
+        </div>
+        <div class="trust-card">
+          <div class="trust-card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="none" viewBox="0 0 24 24">
+              <path fill="#fff" d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/>
+            </svg>
+          </div>
+          <span>Profiles manually verified before going live</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-image-wrap">
+      <div class="hero-image-box">
+        <img src="hero-couple.png" alt="Happy couple">
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE -->
+  <section class="section why-section">
+    <div class="section-header">
+      <h2>Why Choose Miti Mayetri?</h2>
+      <p><em>Built for Sindhi families. By people who understand.</em><br>
+        Marriage isn't just two people — it's two families. Miti Mayetri is designed with Sindhi values at its core, not borrowed from a generic platform.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="icon-circle">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield w-8 h-8" data-fg-dvy20="2055.312:2055.3040:/src/app/components/Features.tsx:6:11:141:30:e:Shield::::::B8zf" data-fgid-dvy20=":r2l:"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path></svg>
+
+        </div>
+        <h3>Every profile verified</h3>
+        <p>No fake accounts. All profiles are manually screened before going live.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon-circle">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users w-8 h-8" data-fg-dvy21="2055.312:2055.3040:/src/app/components/Features.tsx:11:11:349:29:e:Users::::::DV8M" data-fgid-dvy21=":r2q:"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+        </div>
+        <h3>A real person guides you</h3>
+        <p>Our relationship managers assist at every step — not just an algorithm.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon-circle">
+
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-lock w-8 h-8" data-fg-dvy22="2055.312:2055.3040:/src/app/components/Features.tsx:16:11:546:28:e:Lock::::::D0Cv" data-fgid-dvy22=":r2v:"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+        </div>
+        <h3>Your privacy, your control</h3>
+        <p>Choose exactly who sees your photo and contact details.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon-circle">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart-handshake w-8 h-8" data-fg-dvy23="2055.312:2055.3040:/src/app/components/Features.tsx:21:11:720:38:e:HeartHandshake::::::Z4V" data-fgid-dvy23=":r34:"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path><path d="M12 5 9.04 7.96a2.17 2.17 0 0 0 0 3.08c.82.82 2.13.85 3 .07l2.07-1.9a2.82 2.82 0 0 1 3.79 0l2.96 2.66"></path><path d="m18 15-2-2"></path><path d="m15 18-2-2"></path></svg>
+        </div>
+        <h3>Only for our community</h3>
+        <p>Exclusively Sindhi. We understand our culture, traditions, and values.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUCCESS STORIES -->
+  <section class="section stories-section">
+    <div class="section-header">
+      <h2>Happily Ever After</h2>
+      <p><em>From the first hello to a lifetime together</em> — these stories celebrate the magical moments when two hearts found their perfect match.</p>
+    </div>
+    <div class="stories-grid">
+      <div class="story-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>"The personalised support changed everything. They understood exactly what our family needed."</blockquote>
+        <div class="story-couple">● Vikram &amp; Neha Bhopal</div>
+      </div>
+      <div class="story-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>"The verification process gave me confidence. I found my match within 2 months of joining."</blockquote>
+        <div class="story-couple">● Rajesh &amp; Meera Dubai</div>
+      </div>
+      <div class="story-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>"We connected over our love for Sindhi food and music. We never thought we'd find this online."</blockquote>
+        <div class="story-couple">● Amit &amp; Simran Mumbai</div>
+      </div>
+    </div>
+    <a href="success-stories.html" class="btn-primary">Read More Stories <span class="heart">♥</span></a>
+  </section>
+
+  <!-- MEMBERSHIP -->
+  <section class="section membership-section" id="membership">
+    <div class="section-header">
+      <h2>Membership Plans</h2>
+      <p>Choose a plan that suits your needs. Upgrade anytime to unlock premium features and find your match faster.</p>
+    </div>
+    <div class="plans-grid">
+      <!-- Registration -->
+      <div class="plan-card">
+        <div class="plan-icon">
+
+          <div class="icon-circle">
+                    <span class="svg_wrapper">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users w-8 h-8" data-fg-dvy21="2055.312:2055.3040:/src/app/components/Features.tsx:11:11:349:29:e:Users::::::DV8M" data-fgid-dvy21=":r2q:"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                    </span>
+                  </div>
+        </div>
+        <div class="plan-name">Registration Fee</div>
+        <div class="plan-label">One-time &amp; mandatory</div>
+        <div class="plan-price"><span class="currency">₹</span>99</div>
+        <hr class="plan-divider">
+        <ul class="check-list">
+          <li class="check-item">Valid till marriage</li>
+          <li class="check-item">Basic onboarding included</li>
+          <li class="check-item">Secure profile management</li>
+          <li class="check-item">Access to community groups</li>
+        </ul>
+        <a href="#" class="btn-primary">Register Now <span class="heart">♥</span></a>
+      </div>
+      <!-- Plan A -->
+      <div class="plan-card">
+        <div class="plan-icon">
+
+          <div class="icon-circle">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sparkles text-[#95361D]" data-fg-ce4d33="2055.317:2055.5736:/src/app/components/Pricing.tsx:110:21:4238:54:e:IconComponent" data-fgid-ce4d33=":r5t:"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"></path><path d="M20 3v4"></path><path d="M22 5h-4"></path><path d="M4 17v2"></path><path d="M5 18H3"></path></svg>
+                  </div>
+        </div>
+        <div class="plan-name">Plan A</div>
+        <div class="plan-label">Curated Matches</div>
+        <div class="plan-price"><span class="currency">₹</span>249</div>
+        <div class="plan-period">/ 3 months</div>
+        <hr class="plan-divider">
+        <ul class="check-list">
+          <li class="check-item">Get 15 suitable matches within 3 months</li>
+          <li class="check-item">Matches curated according to your preferences</li>
+          <li class="check-item">Focused, personalised matchmaking experience</li>
+          <li class="check-item">One-time fee for the 3-month duration</li>
+          <li class="check-item">Saves time and ensures quality</li>
+        </ul>
+        <div class="btn-disabled">For Selected Profile <span class="heart">♥</span></div>
+      </div>
+      <!-- Plan B -->
+      <div class="plan-card">
+        <div class="plan-icon">
+          <div class="icon-circle">
+                    <span class="svg_wrapper">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye text-[#95361D]" data-fg-ce4d33="2055.317:2055.5736:/src/app/components/Pricing.tsx:110:21:4238:54:e:IconComponent" data-fgid-ce4d33=":r6n:"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path><circle cx="12" cy="12" r="3"></circle></svg>                    </span>
+                  </div>
+        </div>
+        <div class="plan-name">Plan B</div>
+        <div class="plan-label">Profile Unlock Plan</div>
+        <div class="plan-price"><span class="currency">₹</span>49</div>
+        <div class="plan-period">/ per profile</div>
+        <hr class="plan-divider">
+        <ul class="check-list">
+          <li class="check-item">Access all biodata shared in community groups</li>
+          <li class="check-item">View profile summaries for free</li>
+          <li class="check-item">Pay ₹50 to view full biodata details</li>
+          <li class="check-item">Browse more options on your own</li>
+          <li class="check-item">Ideal for self guided search</li>
+        </ul>
+        <div class="btn-disabled">Waiting <span class="heart">♥</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section how-section">
+    <div class="section-header">
+      <h2>How It Works</h2>
+      <p>Finding your perfect match is simple with Miti Mayetri. Follow these easy steps to begin your journey.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">01</div>
+        <div class="icon-circle">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield w-8 h-8" data-fg-dvy20="2055.312:2055.3040:/src/app/components/Features.tsx:6:11:141:30:e:Shield::::::B8zf" data-fgid-dvy20=":r2l:"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path></svg>
+        </div>
+        <h3>Register &amp; Fill Details</h3>
+        <p>Sign up with us and complete your profile with all necessary details to help us find your perfect match.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">02</div>
+        <div class="icon-circle"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users w-8 h-8" data-fg-dvy21="2055.312:2055.3040:/src/app/components/Features.tsx:11:11:349:29:e:Users::::::DV8M" data-fgid-dvy21=":r2q:"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div>
+        <h3>Join Our Exclusive Group</h3>
+        <p>After registration, we'll add you to our exclusive group where you'll receive suitable matches tailored to your preferences.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">03</div>
+        <div class="icon-circle"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-lock w-8 h-8" data-fg-dvy22="2055.312:2055.3040:/src/app/components/Features.tsx:16:11:546:28:e:Lock::::::D0Cv" data-fgid-dvy22=":r2v:"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div>
+        <h3>Unlock Full Profiles</h3>
+        <p>Found someone interesting? Unlock complete profile details for just ₹50 per profile to learn more about your potential match.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">04</div>
+        <div class="icon-circle"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart-handshake w-8 h-8" data-fg-dvy23="2055.312:2055.3040:/src/app/components/Features.tsx:21:11:720:38:e:HeartHandshake::::::Z4V" data-fgid-dvy23=":r34:"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path><path d="M12 5 9.04 7.96a2.17 2.17 0 0 0 0 3.08c.82.82 2.13.85 3 .07l2.07-1.9a2.82 2.82 0 0 1 3.79 0l2.96 2.66"></path><path d="m18 15-2-2"></path><path d="m15 18-2-2"></path></svg></div>
+        <h3>Match &amp; Connect</h3>
+        <p>Connect with your matches, start meaningful conversations, and take the first step towards your happily ever after.</p>
+      </div>
+    </div>
+    <a href="#" class="btn-primary">Get Started Now <span class="heart">♥</span></a>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="cta-banner">
+    <h2>Join a growing community of Sindhi families</h2>
+    <p>Join thousands of Sindhi families who have found happiness through Miti Mayetri. Registration is free and simple.</p>
+    <a href="#" class="btn-primary">Create Your Profile Now <span class="heart">♥</span></a>
+  </section>
+<!-- ── ANNOUNCEMENT MARQUEE ── -->
+<section class="marquee-section">
+  <div class="marquee-track">
+    <div class="marquee-item"><span class="marquee-heart">♥</span> 450+ Sindhi families have found their perfect match through Miti Mayetri <span class="marquee-dot"></span></div>
+    <div class="marquee-item">New profiles added every day — Register now for ₹99 <span class="marquee-dot"></span></div>
+    <div class="marquee-item"><span class="marquee-heart">♥</span> Exclusively for the Sindhi community — Verified profiles, real support <span class="marquee-dot"></span></div>
+    <div class="marquee-item">Plan A: Get 15 curated matches in 3 months — Starting ₹249 <span class="marquee-dot"></span></div>
+    <div class="marquee-item"><span class="marquee-heart">♥</span> Your privacy, your control — You choose who sees your profile <span class="marquee-dot"></span></div>
+    <div class="marquee-item">Join thousands of Sindhi families across India and worldwide <span class="marquee-dot"></span></div>
+    <!-- Duplicate for seamless loop -->
+    <div class="marquee-item"><span class="marquee-heart">♥</span> 450+ Sindhi families have found their perfect match through Miti Mayetri <span class="marquee-dot"></span></div>
+    <div class="marquee-item">New profiles added every day — Register now for ₹99 <span class="marquee-dot"></span></div>
+    <div class="marquee-item"><span class="marquee-heart">♥</span> Exclusively for the Sindhi community — Verified profiles, real support <span class="marquee-dot"></span></div>
+    <div class="marquee-item">Plan A: Get 15 curated matches in 3 months — Starting ₹249 <span class="marquee-dot"></span></div>
+    <div class="marquee-item"><span class="marquee-heart">♥</span> Your privacy, your control — You choose who sees your profile <span class="marquee-dot"></span></div>
+    <div class="marquee-item">Join thousands of Sindhi families across India and worldwide <span class="marquee-dot"></span></div>
+  </div>
+</section>
+
+  <div class="footer-background-set">
+    <div class="absolute inset-0 opacity-[0.03] pointer-events-none">
+    <img src="announment-back.png" alt="" class="w-full h-full object-cover">
+  
+  </div>
+  <div id="footer-placeholder">
+
+
+  </div>
+  </div>
+  <script src="shared.js"></script>
+</body>
+</html>

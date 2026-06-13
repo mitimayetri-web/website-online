@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Success Stories — Miti Mayetri</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ── Filter ── */
+    .filter-bar {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+    }
+    .filter-btn {
+      padding: 9px 22px;
+      border-radius: var(--radius-pill);
+      border: 1.5px solid var(--border);
+      background: var(--white);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-mid);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: var(--maroon);
+      color: var(--white);
+      border-color: var(--maroon);
+    }
+
+    /* ── Stories Grid ── */
+    .stories-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .story-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .story-card:hover { box-shadow: var(--shadow-soft); transform: translateY(-4px); }
+    .story-card-img {
+      height: 160px;
+      background: linear-gradient(135deg, var(--cream-dark), var(--border));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 52px;
+    }
+    .story-card-body { padding: 24px; }
+    .story-card-body .stars { font-size: 15px; margin-bottom: 10px; color: var(--gold); }
+    .story-card-body blockquote {
+      font-size: 14px;
+      font-style: italic;
+      color: var(--text-mid);
+      line-height: 1.7;
+      margin-bottom: 16px;
+      border-left: 3px solid var(--maroon);
+      padding-left: 12px;
+    }
+    .couple-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--maroon);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .couple-loc { font-size: 12px; color: var(--text-light); margin-top: 3px; }
+
+    /* ── Featured Story ── */
+    .featured-story {
+      background: var(--maroon);
+      border-radius: var(--radius-lg);
+      padding: 56px;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 48px;
+      align-items: center;
+      margin-bottom: 64px;
+      color: var(--white);
+    }
+    .featured-emoji { font-size: 100px; text-align: center; }
+    .featured-badge {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--white);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: var(--radius-pill);
+      margin-bottom: 14px;
+    }
+    .featured-story h3 {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+    .featured-story p { color: rgba(255,255,255,0.85); font-size: 15px; line-height: 1.75; margin-bottom: 12px; }
+    .featured-couple { font-size: 14px; font-weight: 700; color: var(--gold-light); letter-spacing: 0.08em; text-transform: uppercase; }
+
+    /* ── Share CTA ── */
+    .share-cta {
+      background: var(--cream);
+      border-radius: var(--radius-lg);
+      padding: 56px;
+      text-align: center;
+      margin-top: 64px;
+      border: 1px solid var(--border);
+    }
+    .share-cta h2 { color: var(--maroon); margin-bottom: 12px; }
+    .share-cta p  { color: var(--text-light); margin-bottom: 28px; font-size: 15px; }
+
+    /* ── Stats Bar ── */
+    .stats-bar-section { background: var(--cream-dark); padding: 50px 60px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .stats-bar { display: flex; justify-content: center; gap: 80px; flex-wrap: wrap; }
+    .sb-item { text-align: center; }
+    .sb-num { font-family: var(--font-display); font-size: 2.4rem; font-weight: 700; color: var(--maroon); display: block; }
+    .sb-label { font-size: 13px; color: var(--text-light); }
+
+    @media (max-width: 900px) {
+      .stories-grid { grid-template-columns: 1fr 1fr; }
+      .featured-story { grid-template-columns: 1fr; padding: 36px; }
+      .featured-emoji { display: none; }
+      .stats-bar { gap: 40px; }
+    }
+    @media (max-width: 600px) {
+      .stories-grid { grid-template-columns: 1fr; }
+      .share-cta { padding: 36px 24px; }
+      .stats-bar-section { padding: 40px 24px; }
+    }
+  </style>
+</head>
+<body>
+  <div id="navbar-placeholder"></div>
+
+  <div class="page-hero">
+    <div class="page-hero-eyebrow">Happily Ever After</div>
+    <h1>Success Stories</h1>
+    <p>Every great marriage starts with a first hello.
+      <br>
+      These are the stories we are here to create — Sindhi families finding their perfect match, one curated introduction at a time. As our community grows, this page will fill with real couples. For now, here is what we are working towards.
+    </p>
+  </div>
+
+  <!-- STATS BAR -->
+  <!-- <div class="stats-bar-section">
+    <div class="stats-bar">
+      <div class="sb-item"><span class="sb-num">450+</span><span class="sb-label">Successful Matches</span></div>
+      <div class="sb-item"><span class="sb-num">2000+</span><span class="sb-label">Happy Families</span></div>
+      <div class="sb-item"><span class="sb-num">15+</span><span class="sb-label">Cities Across India</span></div>
+      <div class="sb-item"><span class="sb-num">4.9★</span><span class="sb-label">Average Rating</span></div>
+    </div>
+  </div> -->
+
+<!-- ── ANNOUNCEMENT MARQUEE ── -->
+<section class="marquee-section">
+  <div class="marquee-track">
+    <div class="marquee-item"><span class="marquee-heart">♥</span> 450+ Sindhi families have found their perfect match through Miti Mayetri <span class="marquee-dot"></span></div>
+    <div class="marquee-item">New profiles added every day — Register now for ₹99 <span class="marquee-dot"></span></div>
+    <div class="marquee-item"><span class="marquee-heart">♥</span> Exclusively for the Sindhi community — Verified profiles, real support <span class="marquee-dot"></span></div>
+    <div class="marquee-item">Plan A: Get 15 curated matches in 3 months — Starting ₹249 <span class="marquee-dot"></span></div>
+    <div class="marquee-item"><span class="marquee-heart">♥</span> Your privacy, your control — You choose who sees your profile <span class="marquee-dot"></span></div>
+    <div class="marquee-item">Join thousands of Sindhi families across India and worldwide <span class="marquee-dot"></span></div>
+    <!-- Duplicate for seamless loop -->
+    <div class="marquee-item"><span class="marquee-heart">♥</span> 450+ Sindhi families have found their perfect match through Miti Mayetri <span class="marquee-dot"></span></div>
+    <div class="marquee-item">New profiles added every day — Register now for ₹99 <span class="marquee-dot"></span></div>
+    <div class="marquee-item"><span class="marquee-heart">♥</span> Exclusively for the Sindhi community — Verified profiles, real support <span class="marquee-dot"></span></div>
+    <div class="marquee-item">Plan A: Get 15 curated matches in 3 months — Starting ₹249 <span class="marquee-dot"></span></div>
+    <div class="marquee-item"><span class="marquee-heart">♥</span> Your privacy, your control — You choose who sees your profile <span class="marquee-dot"></span></div>
+    <div class="marquee-item">Join thousands of Sindhi families across India and worldwide <span class="marquee-dot"></span></div>
+  </div>
+</section>
+
+ <div class="footer-background-set">
+    <div class="absolute inset-0 opacity-[0.03] pointer-events-none">
+    <img src="announment-back.png" alt="" class="w-full h-full object-cover">
+  
+  </div>
+  <div id="footer-placeholder"></div>
+</div>
+  <script src="shared.js"></script>
+</body>
+</html>
