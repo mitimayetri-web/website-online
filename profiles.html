@@ -19,6 +19,33 @@
   const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
   const grid = document.getElementById("profile-grid");
+  const genderFilter = document.getElementById("filter-gender");
+const maritalFilter = document.getElementById("filter-marital");
+let allProfiles = [];
+
+function applyFilters() {
+  const gender = genderFilter.value;
+  const marital = maritalFilter.value;
+
+  const filtered = allProfiles.filter((p) => {
+    const genderMatch = !gender || p.gender === gender;
+    const maritalMatch = !marital || p.marital_status === marital;
+    return genderMatch && maritalMatch;
+  });
+
+  if (filtered.length === 0) {
+    grid.innerHTML = "";
+    emptyState.textContent = "No profiles match your filters.";
+    emptyState.style.display = "block";
+  } else {
+    emptyState.style.display = "none";
+    grid.innerHTML = filtered.map(cardTemplate).join("");
+    attachUnlockHandlers();
+  }
+}
+
+genderFilter.addEventListener("change", applyFilters);
+maritalFilter.addEventListener("change", applyFilters);
   const emptyState = document.getElementById("empty-state");
   const loadingState = document.getElementById("loading-state");
 
@@ -114,7 +141,9 @@
       return;
     }
 
-    grid.innerHTML = data.map(cardTemplate).join("");
+   allProfiles = data;
+applyFilters();
+    // grid.innerHTML = data.map(cardTemplate).join("");
     // attachUnlockHandlers();
   }
 
@@ -347,6 +376,32 @@ a.unlock-btn {
   @media (prefers-reduced-motion: reduce) {
     .unlock-btn { transition: none; }
   }
+
+  .filter-bar {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.filter-bar select {
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.35);
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+}
+
+.filter-bar select option {
+  color: var(--ink);
+}
+.filter-bar select:focus {
+  outline: none;
+}
 </style>
 </head>
 <body>
@@ -354,6 +409,19 @@ a.unlock-btn {
 <header class="page-header">
   <h1>Browse Verified Profiles</h1>
   <p>Every profile below has been manually reviewed. Full details are shown to everyone — unlock a profile for name, photo and contact number.</p>
+  <div class="filter-bar">
+  <select id="filter-gender">
+    <option value="">All Genders</option>
+    <option value="Male">Male</option>
+    <option value="Female">Female</option>
+  </select>
+
+  <select id="filter-marital">
+    <option value="">All Marital Status</option>
+    <option value="Single">Single</option>
+    <option value="Separated">Separated</option>
+  </select>
+</div>
 </header>
 
 <main>
