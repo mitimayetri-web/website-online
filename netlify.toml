@@ -1,0 +1,8 @@
+[build]
+  functions = "netlify/functions"
+
+# Serves mitimayetri.com/profiles (no .html in the URL)
+[[redirects]]
+  from = "/profiles"
+  to = "/profiles.html"
+  status = 200
