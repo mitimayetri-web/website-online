@@ -87,7 +87,7 @@
           📌 Contact details will be shared by admin after mutual interest.
         </p>
 
-        <a class="unlock-btn" data-id="${p.id}" href="https://rzp.io/rzp/mitimayetri-registration-fee" data-price="${p.unlock_price_paise}">
+        <a class="unlock-btn" data-id="${p.id}" href="https://rzp.io/rzp/unlock-full-profile" data-price="${p.unlock_price_paise}">
           Unlock Full Profile — ${rupees(p.unlock_price_paise)} ♥
         </a>
       </article>
@@ -115,14 +115,14 @@
     }
 
     grid.innerHTML = data.map(cardTemplate).join("");
-    attachUnlockHandlers();
+    // attachUnlockHandlers();
   }
 
-  function attachUnlockHandlers() {
-    document.querySelectorAll(".unlock-btn").forEach((btn) => {
-      btn.addEventListener("click", () => openCheckout(btn.dataset.id, Number(btn.dataset.price), btn));
-    });
-  }
+  // function attachUnlockHandlers() {
+  //   document.querySelectorAll(".unlock-btn").forEach((btn) => {
+  //     btn.addEventListener("click", () => openCheckout(btn.dataset.id, Number(btn.dataset.price), btn));
+  //   });
+  // }
 
   async function openCheckout(profileId, amountPaise, btnEl) {
     btnEl.disabled = true;

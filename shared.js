@@ -48,7 +48,8 @@ document.getElementById('footer-placeholder').innerHTML = `
         <h4>Contact Us</h4>
         <ul>
           <li><a href="#">📍 Jabalpur, MP</a></li>
-          <li><a href="mailto:mitimayetri@gmail.com">✉mitimayetri@gmail.com</a></li>
+          <li><a href="tel:+919993335492">📞 +91 9993335492</a></li>
+          <li><a href="mailto:mitimayetri@gmail.com">✉ mitimayetri@gmail.com</a></li>
         </ul>
       </div>
     </div>
