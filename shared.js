@@ -12,11 +12,11 @@ document.getElementById('navbar-placeholder').innerHTML = `
       <img src="logo.png" alt="Miti Mayetri" style="height:60px; width:auto;">
     </a>
     <ul class="nav-links">
-      <li><a href="index.html"        class="${isActive('index.html')}">Home</a></li>
-      <li><a href="about.html"        class="${isActive('about.html')}">About</a></li>
-      <li><a href="success-stories.html" class="${isActive('success-stories.html')}">Success Stories</a></li>
+      <li><a href="index.html"        class="${isActive('index')}">Home</a></li>
+      <li><a href="about.html"        class="${isActive('about')}">About</a></li>
+      <li><a href="success-stories.html" class="${isActive('success-stories')}">Success Stories</a></li>
       <li><a href="index.html#membership">Membership</a></li>
-      <li><a href="contact.html"      class="${isActive('contact.html')}">Contact</a></li>
+      <li><a href="contact.html"      class="${isActive('contact')}">Contact</a></li>
     </ul>
     <div class="nav-actions">
       <a href="https://forms.gle/jrAWi5nGFJL1nZMP6" class="btn-primary">Register Now ♥</a>
